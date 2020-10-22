@@ -43,6 +43,8 @@ public class FemtonSpel extends JFrame {
         buttonsGame.add(b11); buttonsGame.add(b12); buttonsGame.add(b13); buttonsGame.add(b14); buttonsGame.add(b15);
         buttonsGame.add(bNull);
 
+        //makeButtons();
+
         add(panel);
 
         panel.setLayout(new GridLayout(4,4));
