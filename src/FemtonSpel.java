@@ -50,11 +50,6 @@ public class FemtonSpel extends JFrame {
 
         panel.setLayout(new GridLayout(4,4));
 
-        //Collections.shuffle(buttonsGame);
-        //for(JButton button : buttonsGame){
-        //    panel.add(button);
-        //}
-
         shuffleButtons();
 
         addButtonListeners();
