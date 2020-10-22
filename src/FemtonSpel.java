@@ -10,7 +10,7 @@ import java.util.jar.JarFile;
  * Project: femtonSpel
  * Copyright: MIT
  */
-public class FemtonSpel extends JFrame {
+public class FemtonSpel extends JFrame{
 
     private JPanel panel = new JPanel();
     private List<JButton> buttonsOrdered = new ArrayList<>();
