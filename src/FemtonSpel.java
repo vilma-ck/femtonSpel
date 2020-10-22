@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.jar.JarFile;
-
 /**
  * Created by Vilma Couturier Kaijser
  * Date: 2020-10-22
@@ -36,8 +35,6 @@ public class FemtonSpel extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
-
     }
 
     public void makeButtons(){
@@ -54,5 +51,3 @@ public class FemtonSpel extends JFrame {
     }
 
 }
-
-
