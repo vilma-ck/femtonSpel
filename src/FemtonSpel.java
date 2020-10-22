@@ -59,8 +59,6 @@ public class FemtonSpel extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
-
     }
 
     public void makeButtons(){
