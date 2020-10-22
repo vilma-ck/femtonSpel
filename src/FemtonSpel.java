@@ -52,7 +52,6 @@ public class FemtonSpel extends JFrame {
         Collections.shuffle(buttonsGame);
         for(JButton button : buttonsGame){
             panel.add(button);
-            button.addMouseListener(myMouseListener);
         }
 
         pack();
@@ -78,7 +77,6 @@ public class FemtonSpel extends JFrame {
 
         }
     };
-
 
         public static void main(String[] args) {
         FemtonSpel fs = new FemtonSpel();
