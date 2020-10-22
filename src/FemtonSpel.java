@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,6 +52,7 @@ public class FemtonSpel extends JFrame {
         Collections.shuffle(buttonsGame);
         for(JButton button : buttonsGame){
             panel.add(button);
+            button.addMouseListener(myMouseListener);
         }
 
         pack();
@@ -69,7 +72,15 @@ public class FemtonSpel extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
+    MouseAdapter myMouseListener = new MouseAdapter() {
+        @Override
+        public void mouseDragged(MouseEvent e) {
+
+        }
+    };
+
+
+        public static void main(String[] args) {
         FemtonSpel fs = new FemtonSpel();
     }
 
