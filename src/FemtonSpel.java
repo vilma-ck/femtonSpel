@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +13,8 @@ import java.util.List;
  * Copyright: MIT
  */
 public class FemtonSpel extends JFrame {
+
+    //test test
 
     private JPanel panel = new JPanel();
     private List<JButton> buttonsOrdered = new ArrayList<>();
@@ -52,8 +54,9 @@ public class FemtonSpel extends JFrame {
         Collections.shuffle(buttonsGame);
         for(JButton button : buttonsGame){
             panel.add(button);
-            button.addMouseListener(myMouseListener);
         }
+
+        addButtonListeners();
 
         pack();
         setLocationRelativeTo(null);
@@ -64,23 +67,76 @@ public class FemtonSpel extends JFrame {
 
     }
 
-    public void makeButtons(){
-        for (int i = 1; i < 16; i++) {
-            buttonsOrdered.add(new JButton(String.valueOf(i)));
-            buttonsGame.add(new JButton(String.valueOf(i)));
-            //System.out.println(i);
+
+
+    public void addButtonListeners(){
+        ActionListener l = new MoveButtonListener();
+
+        for(JButton b : buttonsGame){
+            b.addActionListener(l);
         }
     }
 
-    MouseAdapter myMouseListener = new MouseAdapter() {
+    class MoveButtonListener implements ActionListener{
+
         @Override
-        public void mouseDragged(MouseEvent e) {
+        public void actionPerformed(ActionEvent actionEvent) {
+            int indexCounter = 0;
+            int index = -1;
+            for(JButton button: buttonsGame){
+                if(actionEvent.getSource() == button){
+                    index = indexCounter;
+                }
+                indexCounter ++;
+            }
+
+            System.out.println(index);
+
+            //här kolla om knappen på index är bredvid tomma platsen
+            // anropa nån checkNeighbours-metod?
+
+            System.out.println(besideEmpty(index));
 
         }
-    };
+    }
 
 
-        public static void main(String[] args) {
+    public boolean besideEmpty(int index){
+
+        if(index%4 != 0){
+            // vi kollar index-1
+            if(buttonsGame.get(index-1).equals(bNull)){
+                return true;
+            }
+        }
+
+        if (index%4 != 3){
+            // vi kollar index+1
+            if(buttonsGame.get(index+1).equals(bNull)){
+                return true;
+            }
+        }
+
+        if(index > 3){
+            // vi kollar index-4
+            if(buttonsGame.get(index-4).equals(bNull)){
+                return true;
+            }
+        }
+
+        if(index < 12){
+            // vi kollar index+4
+            if(buttonsGame.get(index+4).equals(bNull)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    public static void main(String[] args) {
         FemtonSpel fs = new FemtonSpel();
     }
 
