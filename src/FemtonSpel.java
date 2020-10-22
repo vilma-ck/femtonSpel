@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,8 +43,6 @@ public class FemtonSpel extends JFrame {
         buttonsGame.add(b11); buttonsGame.add(b12); buttonsGame.add(b13); buttonsGame.add(b14); buttonsGame.add(b15);
         buttonsGame.add(bNull);
 
-        //makeButtons();
-
         add(panel);
 
         panel.setLayout(new GridLayout(4,4));
@@ -51,6 +51,8 @@ public class FemtonSpel extends JFrame {
         for(JButton button : buttonsGame){
             panel.add(button);
         }
+
+        addButtonListeners();
 
         pack();
         setLocationRelativeTo(null);
@@ -61,13 +63,39 @@ public class FemtonSpel extends JFrame {
 
     }
 
-    public void makeButtons(){
-        for (int i = 1; i < 16; i++) {
-            buttonsOrdered.add(new JButton(String.valueOf(i)));
-            buttonsGame.add(new JButton(String.valueOf(i)));
-            //System.out.println(i);
+
+
+    public void addButtonListeners(){
+        ActionListener l = new MoveButtonListener();
+
+        for(JButton b : buttonsGame){
+            b.addActionListener(l);
         }
     }
+
+    class MoveButtonListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            int indexCounter = 0;
+            int index = -1;
+            for(JButton button: buttonsGame){
+                if(actionEvent.getSource() == button){
+                    index = indexCounter;
+                }
+                indexCounter ++;
+            }
+
+            System.out.println(index);
+
+
+            //här kolla om knappen på index är bredvid tomma platsen
+            // anropa nån checkNeighbours-metod?
+
+
+        }
+    }
+
 
     public static void main(String[] args) {
         FemtonSpel fs = new FemtonSpel();
