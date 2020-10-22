@@ -45,8 +45,6 @@ public class FemtonSpel extends JFrame {
         buttonsGame.add(b11); buttonsGame.add(b12); buttonsGame.add(b13); buttonsGame.add(b14); buttonsGame.add(b15);
         buttonsGame.add(bNull);
 
-        //makeButtons();
-
         add(panel);
 
         panel.setLayout(new GridLayout(4,4));
@@ -92,10 +90,10 @@ public class FemtonSpel extends JFrame {
 
             System.out.println(index);
 
+
             //här kolla om knappen på index är bredvid tomma platsen
             // anropa nån checkNeighbours-metod?
 
-            System.out.println(besideEmpty(index));
 
         }
     }
