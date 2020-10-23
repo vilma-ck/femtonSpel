@@ -60,6 +60,7 @@ public class FemtonSpel extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
+
     }
 
     public void shuffleButtons(){
@@ -100,9 +101,10 @@ public class FemtonSpel extends JFrame {
 
             System.out.println(index);
 
-
             //här kolla om knappen på index är bredvid tomma platsen
             // anropa nån checkNeighbours-metod?
+
+            System.out.println(besideEmpty(index));
 
         }
     }
@@ -117,6 +119,41 @@ public class FemtonSpel extends JFrame {
             }
         }
     }
+
+
+    public boolean besideEmpty(int index){
+
+        if(index%4 != 0){
+            // vi kollar index-1
+            if(buttonsGame.get(index-1).equals(bNull)){
+                return true;
+            }
+        }
+
+        if (index%4 != 3){
+            // vi kollar index+1
+            if(buttonsGame.get(index+1).equals(bNull)){
+                return true;
+            }
+        }
+
+        if(index > 3){
+            // vi kollar index-4
+            if(buttonsGame.get(index-4).equals(bNull)){
+                return true;
+            }
+        }
+
+        if(index < 12){
+            // vi kollar index+4
+            if(buttonsGame.get(index+4).equals(bNull)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
 
     public static void main(String[] args) {
