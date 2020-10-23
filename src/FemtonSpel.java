@@ -77,7 +77,7 @@ public class FemtonSpel extends JFrame {
     }
 
     public void shuffleButtons(){
-        Collections.shuffle(buttonsGame);
+        //Collections.shuffle(buttonsGame);
         panel.removeAll();
         northPanel.removeAll();
         for (JButton button : buttonsGame) {
@@ -156,7 +156,7 @@ public class FemtonSpel extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent){
-
+            int buttonsInOrderCounter = 0;
             for (int i = 0; i < buttonsGame.size()-1; i++) {
 
                 if(buttonsGame.get(i + 1) != null){
@@ -165,10 +165,15 @@ public class FemtonSpel extends JFrame {
 
                         if(Integer.parseInt(buttonsGame.get(i).getText())+1 == Integer.parseInt(buttonsGame.get(i+1).getText())){
                             System.out.println("knappen " + buttonsGame.get(i).getText() + " är före " + buttonsGame.get(i+1).getText());
+                            buttonsInOrderCounter++;
                         }
                     }
                 }
 
+            }
+            if(buttonsInOrderCounter == 14){
+                System.out.println("alla knappar var iordning!!");
+                youWonPrintOut();
             }
 
         }
