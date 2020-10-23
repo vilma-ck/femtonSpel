@@ -18,8 +18,10 @@ public class FemtonSpel extends JFrame {
 
     private JPanel panel = new JPanel();
     private JPanel southPanel = new JPanel(new GridLayout(1, 2));
+    private JPanel northPanel = new JPanel();
     private List<JButton> buttonsOrdered = new ArrayList<>();
     private List<JButton> buttonsGame = new ArrayList<>();
+    private JLabel outputText = new JLabel();
 
     private JButton b1 = new JButton("1");
     private JButton b2 = new JButton("2");
@@ -52,11 +54,14 @@ public class FemtonSpel extends JFrame {
 
         add(panel);
         add(southPanel, BorderLayout.SOUTH);
+        add(northPanel, BorderLayout.NORTH);
 
         panel.setLayout(new GridLayout(4,4));
 
         southPanel.add(newGame);
         southPanel.add(checkOrder);
+
+        northPanel.add(outputText);
 
         shuffleButtons();
 
@@ -74,14 +79,19 @@ public class FemtonSpel extends JFrame {
     public void shuffleButtons(){
         Collections.shuffle(buttonsGame);
         panel.removeAll();
+        northPanel.removeAll();
         for (JButton button : buttonsGame) {
             panel.add(button);
         }
         panel.revalidate();
         panel.repaint();
+
+        outputText.setText("Välkommen!");
+        northPanel.add(outputText);
     }
 
     public void addButtonListeners(){
+
         ActionListener l = new MoveButtonListener();
         ActionListener l2 = new NewGameListener();
         ActionListener l3 = new CheckOrderListener();
@@ -112,6 +122,11 @@ public class FemtonSpel extends JFrame {
 
             System.out.println("index " + index);
 
+            //här kolla om knappen på index är bredvid tomma platsen
+            // anropa nån checkNeighbours-metod?
+            /* int indexForNull = index - besideEmpty(index);
+            System.out.println("index knapp: " + index);
+            System.out.println("index null: " + indexForNull); */
 
 
             if(besideEmpty(index)!= 0){
@@ -132,9 +147,8 @@ public class FemtonSpel extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent){
 
-            if (actionEvent.getSource() == newGame){
                 shuffleButtons();
-            }
+
         }
     }
 
@@ -201,7 +215,9 @@ public class FemtonSpel extends JFrame {
         return 0;
     }
 
-
+    public void youWonPrintOut(){
+        outputText.setText("Grattis du vann!");
+    }
 
     public static void main(String[] args) {
         FemtonSpel fs = new FemtonSpel();
