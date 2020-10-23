@@ -117,19 +117,18 @@ public class FemtonSpel extends JFrame {
                 }
                 indexCounter ++;
             }
-            //indexCounter = 0;
 
-            System.out.println("index " + index);
+            //System.out.println("index " + index);
 
             if(besideEmpty(index)!= 0){
                 int indexForNull = index + besideEmpty(index);
-                System.out.println("index knapp: " + index);
-                System.out.println("index null: " + indexForNull);
+                //System.out.println("index knapp: " + index);
+                //System.out.println("index null: " + indexForNull);
 
                 switchPlace(index, indexForNull);
             }
 
-            System.out.println("besideEmpty: " + besideEmpty(index));
+            //System.out.println("besideEmpty: " + besideEmpty(index));
 
         }
     }
@@ -153,10 +152,10 @@ public class FemtonSpel extends JFrame {
 
                 if(buttonsGame.get(i + 1) != null){
                     if(!buttonsGame.get(i).getText().equals(" ") && !buttonsGame.get(i + 1).getText().equals(" ")){
-                        System.out.println(buttonsGame.get(i).getText());
+                        //System.out.println(buttonsGame.get(i).getText());
 
                         if(Integer.parseInt(buttonsGame.get(i).getText())+1 == Integer.parseInt(buttonsGame.get(i+1).getText())){
-                            System.out.println("knappen " + buttonsGame.get(i).getText() + " är före " + buttonsGame.get(i+1).getText());
+                            //System.out.println("knappen " + buttonsGame.get(i).getText() + " är före " + buttonsGame.get(i+1).getText());
                             buttonsInOrderCounter++;
                         }
                     }
@@ -164,7 +163,7 @@ public class FemtonSpel extends JFrame {
 
             }
             if(buttonsInOrderCounter == 14){
-                System.out.println("alla knappar var iordning!!");
+                //System.out.println("alla knappar var iordning!!");
                 youWonPrintOut();
             }
 
