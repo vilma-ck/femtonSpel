@@ -160,7 +160,7 @@ public class FemtonSpel extends JFrame {
             for (int i = 0; i < buttonsGame.size()-1; i++) {
 
                 if(buttonsGame.get(i + 1) != null){
-                    if(!buttonsGame.get(i + 1).getText().equals(" ")){
+                    if(!buttonsGame.get(i).getText().equals(" ") && !buttonsGame.get(i + 1).getText().equals(" ")){
                         System.out.println(buttonsGame.get(i).getText());
 
                         if(Integer.parseInt(buttonsGame.get(i).getText())+1 == Integer.parseInt(buttonsGame.get(i+1).getText())){
