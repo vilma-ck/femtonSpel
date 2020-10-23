@@ -17,6 +17,7 @@ public class FemtonSpel extends JFrame {
     //test test
 
     private JPanel panel = new JPanel();
+    private JPanel southPanel = new JPanel(new GridLayout(1, 2));
     private List<JButton> buttonsOrdered = new ArrayList<>();
     private List<JButton> buttonsGame = new ArrayList<>();
 
@@ -37,6 +38,7 @@ public class FemtonSpel extends JFrame {
     private JButton b15 = new JButton("15");
     private JButton bNull = new JButton(" ");
     private JButton newGame = new JButton("Spela igen!");
+    private JButton checkOrder = new JButton("Kolla ordning");
 
     // testcomment
 
@@ -46,11 +48,13 @@ public class FemtonSpel extends JFrame {
         buttonsGame.add(b11); buttonsGame.add(b12); buttonsGame.add(b13); buttonsGame.add(b14); buttonsGame.add(b15);
         buttonsGame.add(bNull);
 
-        add(newGame, BorderLayout.SOUTH);
-
         add(panel);
+        add(southPanel, BorderLayout.SOUTH);
 
         panel.setLayout(new GridLayout(4,4));
+
+        southPanel.add(newGame);
+        southPanel.add(checkOrder);
 
         shuffleButtons();
 
@@ -60,7 +64,6 @@ public class FemtonSpel extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
 
     }
@@ -78,12 +81,15 @@ public class FemtonSpel extends JFrame {
     public void addButtonListeners(){
         ActionListener l = new MoveButtonListener();
         ActionListener l2 = new NewGameListener();
+        ActionListener l3 = new CheckOrderListener();
 
         for(JButton b : buttonsGame){
             b.addActionListener(l);
         }
 
         newGame.addActionListener(l2);
+
+        checkOrder.addActionListener(l3);
 
     }
 
@@ -130,6 +136,17 @@ public class FemtonSpel extends JFrame {
 
             if (actionEvent.getSource() == newGame){
                 shuffleButtons();
+            }
+        }
+    }
+
+    class CheckOrderListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent){
+
+            if (actionEvent.getSource() == checkOrder){
+
             }
         }
     }
