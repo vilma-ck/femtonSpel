@@ -70,6 +70,7 @@ public class FemtonSpel extends JFrame {
             panel.add(button);
         }
         panel.revalidate();
+        panel.repaint();
     }
 
     public void addButtonListeners(){
