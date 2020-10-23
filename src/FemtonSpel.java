@@ -48,6 +48,8 @@ public class FemtonSpel extends JFrame {
         buttonsGame.add(b11); buttonsGame.add(b12); buttonsGame.add(b13); buttonsGame.add(b14); buttonsGame.add(b15);
         buttonsGame.add(bNull);
 
+        add(newGame, BorderLayout.SOUTH);
+
         add(panel);
         add(southPanel, BorderLayout.SOUTH);
 
@@ -64,6 +66,7 @@ public class FemtonSpel extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 
 
     }
@@ -109,11 +112,6 @@ public class FemtonSpel extends JFrame {
 
             System.out.println("index " + index);
 
-            //här kolla om knappen på index är bredvid tomma platsen
-            // anropa nån checkNeighbours-metod?
-            /* int indexForNull = index - besideEmpty(index);
-            System.out.println("index knapp: " + index);
-            System.out.println("index null: " + indexForNull); */
 
 
             if(besideEmpty(index)!= 0){
@@ -145,9 +143,20 @@ public class FemtonSpel extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent){
 
-            if (actionEvent.getSource() == checkOrder){
+            for (int i = 0; i < buttonsGame.size()-1; i++) {
+
+                if(buttonsGame.get(i + 1) != null){
+                    if(!buttonsGame.get(i + 1).getText().equals(" ")){
+                        System.out.println(buttonsGame.get(i).getText());
+
+                        if(Integer.parseInt(buttonsGame.get(i).getText())+1 == Integer.parseInt(buttonsGame.get(i+1).getText())){
+                            System.out.println("knappen " + buttonsGame.get(i).getText() + " är före " + buttonsGame.get(i+1).getText());
+                        }
+                    }
+                }
 
             }
+
         }
     }
 
