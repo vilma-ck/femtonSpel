@@ -60,7 +60,6 @@ public class FemtonSpel extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
-
     }
 
     public void shuffleButtons(){
@@ -74,13 +73,15 @@ public class FemtonSpel extends JFrame {
     }
 
     public void addButtonListeners(){
+
         ActionListener l = new MoveButtonListener();
+        ActionListener l2 = new NewGameListener();
 
         for(JButton b : buttonsGame){
             b.addActionListener(l);
         }
 
-        newGame.addActionListener(l);
+        newGame.addActionListener(l2);
 
     }
 
@@ -103,10 +104,17 @@ public class FemtonSpel extends JFrame {
             //här kolla om knappen på index är bredvid tomma platsen
             // anropa nån checkNeighbours-metod?
 
+        }
+    }
+
+    class NewGameListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent){
+
             if (actionEvent.getSource() == newGame){
                 shuffleButtons();
             }
-
         }
     }
 
