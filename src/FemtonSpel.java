@@ -35,7 +35,7 @@ public class FemtonSpel extends JFrame {
     private JButton b13 = new JButton("13");
     private JButton b14 = new JButton("14");
     private JButton b15 = new JButton("15");
-    private JButton bNull = new JButton();
+    private JButton bNull = new JButton(" ");
     private JButton newGame = new JButton("Spela igen!");
 
     // testcomment
@@ -101,7 +101,7 @@ public class FemtonSpel extends JFrame {
             }
             indexCounter = 0;
 
-            System.out.println(index);
+            System.out.println("index " + index);
 
             //här kolla om knappen på index är bredvid tomma platsen
             // anropa nån checkNeighbours-metod?
@@ -118,7 +118,7 @@ public class FemtonSpel extends JFrame {
                 switchPlace(index, indexForNull);
             }
 
-            System.out.println(besideEmpty(index));
+            System.out.println("besideEmpty: " + besideEmpty(index));
 
         }
     }
@@ -135,10 +135,8 @@ public class FemtonSpel extends JFrame {
     }
 
     public void switchPlace(int index, int indexForNull){
-        Collections.swap(buttonsGame, index, indexForNull);
-        for(JButton b: buttonsGame){
-            System.out.print(b.getText() + " ");
-        }
+        buttonsGame.get(indexForNull).setText(buttonsGame.get(index).getText());
+        buttonsGame.get(index).setText(" ");
 
         panel.revalidate();
         panel.repaint();
@@ -148,28 +146,28 @@ public class FemtonSpel extends JFrame {
 
         if(index%4 != 0){
             // vi kollar index-1
-            if(buttonsGame.get(index-1).equals(bNull)){
+            if(buttonsGame.get(index-1).getText().equals(" ")){
                 return -1;
             }
         }
 
         if (index%4 != 3){
             // vi kollar index+1
-            if(buttonsGame.get(index+1).equals(bNull)){
+            if(buttonsGame.get(index+1).getText().equals(" ")){
                 return +1;
             }
         }
 
         if(index > 3){
             // vi kollar index-4
-            if(buttonsGame.get(index-4).equals(bNull)){
+            if(buttonsGame.get(index-4).getText().equals(" ")){
                 return -4;
             }
         }
 
         if(index < 12){
             // vi kollar index+4
-            if(buttonsGame.get(index+4).equals(bNull)){
+            if(buttonsGame.get(index+4).getText().equals(" ")){
                 return +4;
             }
         }
