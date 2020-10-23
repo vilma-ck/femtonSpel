@@ -87,49 +87,71 @@ public class FemtonSpel extends JFrame {
                 }
                 indexCounter ++;
             }
+            indexCounter = 0;
 
             System.out.println(index);
 
 
             //här kolla om knappen på index är bredvid tomma platsen
             // anropa nån checkNeighbours-metod?
+            /* int indexForNull = index - besideEmpty(index);
+            System.out.println("index knapp: " + index);
+            System.out.println("index null: " + indexForNull); */
+
+
+            if(besideEmpty(index)!= 0){
+                int indexForNull = index + besideEmpty(index);
+                System.out.println("index knapp: " + index);
+                System.out.println("index null: " + indexForNull);
+
+                switchPlace(index, indexForNull);
+            }
 
 
         }
     }
 
+    public void switchPlace(int index, int indexForNull){
+        Collections.swap(buttonsGame, index, indexForNull);
+        for(JButton b: buttonsGame){
+            System.out.print(b.getText() + " ");
+        }
 
-    public boolean besideEmpty(int index){
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    public int besideEmpty(int index){
 
         if(index%4 != 0){
             // vi kollar index-1
             if(buttonsGame.get(index-1).equals(bNull)){
-                return true;
+                return -1;
             }
         }
 
         if (index%4 != 3){
             // vi kollar index+1
             if(buttonsGame.get(index+1).equals(bNull)){
-                return true;
+                return +1;
             }
         }
 
         if(index > 3){
             // vi kollar index-4
             if(buttonsGame.get(index-4).equals(bNull)){
-                return true;
+                return -4;
             }
         }
 
         if(index < 12){
             // vi kollar index+4
             if(buttonsGame.get(index+4).equals(bNull)){
-                return true;
+                return +4;
             }
         }
 
-        return false;
+        return 0;
     }
 
 
