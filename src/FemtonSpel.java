@@ -34,6 +34,7 @@ public class FemtonSpel extends JFrame {
     private JButton b14 = new JButton("14");
     private JButton b15 = new JButton("15");
     private JButton bNull = new JButton();
+    private JButton newGame = new JButton("Spela igen!");
 
     // testcomment
 
@@ -43,16 +44,13 @@ public class FemtonSpel extends JFrame {
         buttonsGame.add(b11); buttonsGame.add(b12); buttonsGame.add(b13); buttonsGame.add(b14); buttonsGame.add(b15);
         buttonsGame.add(bNull);
 
-        //makeButtons();
+        add(newGame, BorderLayout.SOUTH);
 
         add(panel);
 
         panel.setLayout(new GridLayout(4,4));
 
-        Collections.shuffle(buttonsGame);
-        for(JButton button : buttonsGame){
-            panel.add(button);
-        }
+        shuffleButtons();
 
         addButtonListeners();
 
@@ -62,17 +60,29 @@ public class FemtonSpel extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
-
     }
 
-
+    public void shuffleButtons(){
+        Collections.shuffle(buttonsGame);
+        panel.removeAll();
+        for (JButton button : buttonsGame) {
+            panel.add(button);
+        }
+        panel.revalidate();
+        panel.repaint();
+    }
 
     public void addButtonListeners(){
+
         ActionListener l = new MoveButtonListener();
+        ActionListener l2 = new NewGameListener();
 
         for(JButton b : buttonsGame){
             b.addActionListener(l);
         }
+
+        newGame.addActionListener(l2);
+
     }
 
     class MoveButtonListener implements ActionListener{
@@ -94,7 +104,17 @@ public class FemtonSpel extends JFrame {
             //här kolla om knappen på index är bredvid tomma platsen
             // anropa nån checkNeighbours-metod?
 
+        }
+    }
 
+    class NewGameListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent){
+
+            if (actionEvent.getSource() == newGame){
+                shuffleButtons();
+            }
         }
     }
 
