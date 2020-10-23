@@ -14,8 +14,6 @@ import java.util.List;
  */
 public class FemtonSpel extends JFrame {
 
-    //test test
-
     private JPanel panel = new JPanel();
     private JPanel southPanel = new JPanel(new GridLayout(1, 2));
     private JPanel northPanel = new JPanel();
@@ -40,8 +38,6 @@ public class FemtonSpel extends JFrame {
     private JButton bNull = new JButton(" ");
     private JButton newGame = new JButton("Spela igen!");
     private JButton checkOrder = new JButton("Kolla ordning");
-
-    // testcomment
 
     public FemtonSpel(){
         buttonsGame.add(b1); buttonsGame.add(b2); buttonsGame.add(b3); buttonsGame.add(b4); buttonsGame.add(b5);
@@ -70,8 +66,6 @@ public class FemtonSpel extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
 
     }
 
@@ -160,13 +154,13 @@ public class FemtonSpel extends JFrame {
                         }
                     }
                 }
-
             }
             if(buttonsInOrderCounter == 14){
                 //System.out.println("alla knappar var iordning!!");
                 youWonPrintOut();
             }
-
+            else
+                tryAgain();
         }
     }
 
@@ -213,6 +207,10 @@ public class FemtonSpel extends JFrame {
 
     public void youWonPrintOut(){
         outputText.setText("Grattis du vann!");
+    }
+
+    public void tryAgain(){
+        outputText.setText("Fel ordning. Försök igen!");
     }
 
     public static void main(String[] args) {
