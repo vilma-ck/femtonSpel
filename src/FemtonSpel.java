@@ -19,7 +19,6 @@ public class FemtonSpel extends JFrame {
     private JPanel panel = new JPanel();
     private JPanel southPanel = new JPanel(new GridLayout(1, 2));
     private JPanel northPanel = new JPanel();
-    private List<JButton> buttonsOrdered = new ArrayList<>();
     private List<JButton> buttonsGame = new ArrayList<>();
     private JLabel outputText = new JLabel();
 
@@ -77,7 +76,7 @@ public class FemtonSpel extends JFrame {
     }
 
     public void shuffleButtons(){
-        //Collections.shuffle(buttonsGame);
+        Collections.shuffle(buttonsGame);
         panel.removeAll();
         northPanel.removeAll();
         for (JButton button : buttonsGame) {
@@ -118,16 +117,9 @@ public class FemtonSpel extends JFrame {
                 }
                 indexCounter ++;
             }
-            indexCounter = 0;
+            //indexCounter = 0;
 
             System.out.println("index " + index);
-
-            //här kolla om knappen på index är bredvid tomma platsen
-            // anropa nån checkNeighbours-metod?
-            /* int indexForNull = index - besideEmpty(index);
-            System.out.println("index knapp: " + index);
-            System.out.println("index null: " + indexForNull); */
-
 
             if(besideEmpty(index)!= 0){
                 int indexForNull = index + besideEmpty(index);
