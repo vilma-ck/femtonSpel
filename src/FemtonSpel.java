@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Vilma Couturier Kaijser
+ * Created by Vilma Couturier Kaijser och Lisa Ramel
  * Date: 2020-10-22
  * Project: femtonSpel
  * Copyright: MIT
