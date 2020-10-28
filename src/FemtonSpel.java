@@ -15,7 +15,7 @@ import java.util.List;
 public class FemtonSpel extends JFrame {
 
     private JPanel panel = new JPanel();
-    private JPanel southPanel = new JPanel(new GridLayout(1, 2));
+    //private JPanel southPanel = new JPanel(new GridLayout(1, 2));
     private JPanel northPanel = new JPanel();
     private List<JButton> buttonsGame = new ArrayList<>();
     private JLabel outputText = new JLabel();
@@ -25,12 +25,12 @@ public class FemtonSpel extends JFrame {
         add(newGame, BorderLayout.SOUTH);
 
         add(panel);
-        add(southPanel, BorderLayout.SOUTH);
+        add(newGame, BorderLayout.SOUTH);
         add(northPanel, BorderLayout.NORTH);
 
         panel.setLayout(new GridLayout(4,4));
 
-        southPanel.add(newGame);
+        //southPanel.add(newGame);
 
         northPanel.add(outputText);
 
@@ -55,8 +55,8 @@ public class FemtonSpel extends JFrame {
 
     public void shuffleButtons(){
         Collections.shuffle(buttonsGame);
-        panel.removeAll();
-        northPanel.removeAll();
+        //panel.removeAll();
+        //northPanel.removeAll();
         for (JButton button : buttonsGame) {
             panel.add(button);
         }
@@ -64,7 +64,7 @@ public class FemtonSpel extends JFrame {
         panel.repaint();
 
         outputText.setText("Välkommen!");
-        northPanel.add(outputText);
+        //northPanel.add(outputText);
     }
 
     public void addButtonListeners(){
